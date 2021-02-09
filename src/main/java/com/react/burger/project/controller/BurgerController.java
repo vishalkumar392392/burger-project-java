@@ -26,7 +26,7 @@ public class BurgerController {
 		return burgerRepository.getAllCustomers();
 	}
 	
-	@PostMapping("/order")
+	@PostMapping(path = "/order")
 	public Object placeOrder(@RequestBody Order order) {
 		
 		return null;
