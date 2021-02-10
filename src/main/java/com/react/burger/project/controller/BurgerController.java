@@ -11,25 +11,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.react.burger.project.entity.Customer;
 import com.react.burger.project.modal.Order;
-import com.react.burger.project.repository.BurgerRepository;
+import com.react.burger.project.service.BurgerService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class BurgerController {
 	
 	@Autowired
-	private BurgerRepository burgerRepository;
+	private BurgerService burgerService;
 	
 	@GetMapping("/customers")
-	public List<Customer> getAllBurger() {
+	public List<Customer> getAllCustomers() {
 		
-		return burgerRepository.getAllCustomers();
+		return burgerService.getAllCustomers();
 	}
 	
 	@PostMapping(path = "/order")
-	public Object placeOrder(@RequestBody Order order) {
-		
-		return null;
+	public String placeOrder(@RequestBody Order order) {
+		return burgerService.placeOrder(order);
 	}
 	
 

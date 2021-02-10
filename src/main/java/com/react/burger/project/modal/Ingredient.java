@@ -5,12 +5,12 @@ import lombok.Data;
 @Data
 public class Ingredient {
 	
-	private String salad;
+	private int salad;
 	
-	private String bacon;
+	private int bacon;
 	
-	private String cheese;
+	private int cheese;
 	
-	private String meat;
+	private int meat;
 
 }
