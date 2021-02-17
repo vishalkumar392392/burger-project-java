@@ -21,6 +21,6 @@ public interface BurgerRepository extends JpaRepository<Customer, Integer> {
 			@Param("country")  String country,
 			@Param("street") String street,
 			@Param("zipcode") String zipcode,@Param("delivery")  String delivery,
-			@Param("price") int price,@Param("food")  String food);
+			@Param("price") float price,@Param("food")  String food);
 
 }

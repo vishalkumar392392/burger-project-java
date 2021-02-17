@@ -12,11 +12,13 @@ public class Order {
 	@JsonProperty("deliveryMethod")
 	private String delivery;
 	
-	private int price;
+	private String price;
 	
 	private Ingredient ingredients;
 	
 	private Customer customer;
+	
+	private String items;
 	
 	
 

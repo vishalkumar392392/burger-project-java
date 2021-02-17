@@ -15,5 +15,11 @@ public class Order {
 		
 	private String delivery;
 	
+	private String ingredients;
+	
+	private float price;
+	
+	private Integer customer_id;
+	
 
 }

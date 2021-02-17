@@ -22,4 +22,7 @@ public class Customer {
 	@Column(name = "phonenumber")
 	private String phoneNumber;
 	
+	@Column(name = "address_id")
+	private int addressId;
+	
 }
