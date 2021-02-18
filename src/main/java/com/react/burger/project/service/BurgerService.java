@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.react.burger.project.entity.Address;
 import com.react.burger.project.entity.Customer;
 import com.react.burger.project.entity.Details;
 import com.react.burger.project.modal.Ingredient;
@@ -21,4 +22,6 @@ public interface BurgerService {
 	public List<com.react.burger.project.entity.Order> getAllOrders();
 
 	public List<Details> getDetails();
+
+	public List<Address> getAllAddress();
 }

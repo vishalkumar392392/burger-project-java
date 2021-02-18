@@ -44,7 +44,6 @@ import com.react.burger.project.modal.OrderRequest;
 import com.react.burger.project.modal.ResultModal;
 import com.react.burger.project.modal.Results;
 import com.react.burger.project.modal.TestIngredient;
-import com.react.burger.project.repository.DeatilsRepository;
 import com.react.burger.project.service.BurgerService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -170,8 +169,6 @@ public class BurgerController {
 		List<Details> details = burgerService.getDetails();
 
 		AtomicInteger rowCount = new AtomicInteger(1);
-		AtomicInteger cellCount = new AtomicInteger(0);
-
 		
 		Row row = null;
 		Cell cell = null;
@@ -205,6 +202,12 @@ public class BurgerController {
 		ByteArrayInputStream a = new ByteArrayInputStream(out.toByteArray());
 
 		return ResponseEntity.ok().headers(headers).body(new InputStreamResource(a));
+	}
+	
+	@GetMapping("/address")
+	public List<com.react.burger.project.entity.Address> getAllAddress(){
+		
+		return burgerService.getAllAddress();
 	}
 
 }
