@@ -8,9 +8,11 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.react.burger.project.entity.Customer;
+import com.react.burger.project.entity.Details;
 import com.react.burger.project.modal.Ingredient;
 import com.react.burger.project.modal.Order;
 import com.react.burger.project.repository.BurgerRepository;
+import com.react.burger.project.repository.DeatilsRepository;
 import com.react.burger.project.repository.OrderRepository;
 import com.react.burger.project.service.BurgerService;
 
@@ -22,6 +24,9 @@ public class BurgerServiceImpl implements BurgerService {
 	
 	@Autowired
 	private OrderRepository orderRepository;
+	
+	@Autowired
+	private DeatilsRepository detailsRepository;
 
 	@Override
 	public List<Customer> getAllCustomers() {
@@ -69,5 +74,11 @@ public class BurgerServiceImpl implements BurgerService {
 	public List<com.react.burger.project.entity.Order> getAllOrders() {
 
 		return orderRepository.getAllOrders();
+	}
+
+	@Override
+	public List<Details> getDetails() {
+		
+		return detailsRepository.getDetails();
 	}
 }
