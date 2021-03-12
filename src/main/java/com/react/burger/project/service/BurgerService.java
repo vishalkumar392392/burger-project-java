@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.react.burger.project.entity.Address;
 import com.react.burger.project.entity.Customer;
 import com.react.burger.project.entity.Details;
@@ -24,4 +25,6 @@ public interface BurgerService {
 	public List<Details> getDetails();
 
 	public List<Address> getAllAddress();
+
+	public String getCustomers() throws JsonProcessingException;
 }

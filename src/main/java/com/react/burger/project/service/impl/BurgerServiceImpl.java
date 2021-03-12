@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.react.burger.project.entity.Address;
 import com.react.burger.project.entity.Customer;
 import com.react.burger.project.entity.Details;
@@ -33,6 +35,7 @@ public class BurgerServiceImpl implements BurgerService {
 	
 	@Autowired
 	private AddressRepository addressRepository;
+	
 
 	@Override
 	public List<Customer> getAllCustomers() {
@@ -91,5 +94,30 @@ public class BurgerServiceImpl implements BurgerService {
 	@Override
 	public List<Address> getAllAddress() {
 		return addressRepository.findAll();
+	}
+
+	@Override
+	public String getCustomers() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+		List<com.react.burger.project.modal.Customer> customers = new ArrayList<>();
+		List<Address> addresses = addressRepository.findAll();
+		List<Customer> listcustomers = burgerRepository.findAll();
+		com.react.burger.project.modal.Customer cust = null;
+		for(Customer customer:listcustomers) {
+			cust = new com.react.burger.project.modal.Customer();
+			cust.setEmail(customer.getEmail());
+			cust.setName(customer.getName());
+			cust.setPhoneNumber(customer.getPhoneNumber());
+			cust.setAddress(addresses.stream().filter(x->x.getId()==customer.getAddressId())
+					.map(x->{
+						com.react.burger.project.modal.Address address = new com.react.burger.project.modal.Address ();
+						address.setCountry(x.getCountry());
+						address.setStreet(x.getStreet());
+						address.setZipCode(x.getZipcode());
+						return address;
+					}).findFirst().orElse(null));
+			customers.add(cust);
+		}
+		return objectMapper.writeValueAsString(customers);
 	}
 }
